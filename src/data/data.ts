@@ -1,5 +1,5 @@
 // data/data.ts
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Code } from "lucide-react";
 
 // ── Types ─────────────────────────────────────────────────────
 
@@ -84,11 +84,14 @@ export interface FooterData {
 // ── Navbar ────────────────────────────────────────────────────
 
 export const navLinks: NavLink[] = [
-  { label: "Home",     href: "#hero"     },
-  { label: "About",    href: "#about"    },
-  { label: "Skills",   href: "#skills"   },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact",  href: "#contact"  },
+    { label: 'Home', href: '#hero' },
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' },
+    { label: 'GitHub', href: 'https://github.com/ARAVIND123465' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aravind5338/' },
+    { label: 'LeetCode', href: 'https://leetcode.com/u/Aravindhan_5338-1/' },
 ];
 
 export const navBrand = "Aravindhan.dev";
@@ -101,7 +104,7 @@ export const heroData: HeroData = {
   tagline:      "Full-Stack Developer & ML Enthusiast",
   subTagline:   "Building beautiful web experiences and intelligent systems — from pixels to predictions.",
   ctaPrimary:   { label: "View My Work",    href: "#projects"      },
-  ctaSecondary: { label: "Download Resume", href: "/Srm_resume.pdf" },
+  ctaSecondary: { label: "Download Resume", href: "https://pdf.ac/ElQDGRuX" },
   badge:        "Open to Opportunities 🚀",
 };
 
@@ -122,7 +125,7 @@ export const aboutData: AboutData = {
     { label: "Focus",      value: "Web Dev + Machine Learning" },
     { label: "Status",     value: "Available for Work 🟢"     },
   ],
-  resumeUrl: "/Srm_resume.pdf",
+  resumeUrl: "https://pdf.ac/ElQDGRuX",
 };
 
 // ── Education ─────────────────────────────────────────────────
@@ -234,7 +237,7 @@ export const projects: Project[] = [
     description:     "A full-featured e-commerce web app with product browsing, cart, and checkout.",
     longDescription: "A scalable e-commerce platform enabling customers to browse and purchase products from anywhere at any time. Designed to help businesses reach a global audience, the platform supports millions of concurrent users with a performant React.js frontend and a clean, responsive UI. Features include product listing, search, cart management, and order placement.",
     tags:            ["HTML", "CSS", "JavaScript", "React.js"],
-    githubUrl:       "https://github.com/yourusername/ecommerce",
+    githubUrl:       "https://github.com/ARAVIND123465/ecommerce",
     liveUrl:         "https://yourecommerce.vercel.app",
     featured:        true,
     year:            "2024",
@@ -245,7 +248,7 @@ export const projects: Project[] = [
     description:     "Personal portfolio website built with Next.js showcasing projects and skills.",
     longDescription: "A modern, minimal portfolio website designed to showcase personal projects, skills, and professional history. Built with HTML, CSS, and JavaScript — then upgraded to Next.js for performance and SEO. Demonstrates creativity, UI/UX sensibility, and problem-solving ability through interactive project cards and smooth scroll animations.",
     tags:            ["Next.js", "TypeScript", "Tailwind CSS"],
-    githubUrl:       "https://github.com/yourusername/portfolio",
+    githubUrl:       "https://github.com/ARAVIND123465/portfolio",
     liveUrl:         "https://aravindhan.dev",
     featured:        true,
     year:            "2024",
@@ -259,8 +262,9 @@ export const contactData: ContactData = {
   phone:    "+91 63820 39325",
   location: "Krishnagiri, Tamil Nadu, India",
   socials: [
-    { platform: "GitHub",   url: "https://github.com/yourusername", icon: "Github"  },
-    { platform: "LinkedIn", url: "https://linkedin.com/in/aravind", icon: "Linkedin"},
+    { platform: "GitHub",   url: "https://github.com/ARAVIND123465", icon: "Github"  },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/aravind5338/", icon: "Linkedin" },
+    { platform: "LeetCode", url: "https://leetcode.com/u/Aravindhan_5338-1/", icon: "Code" },
     { platform: "Email",    url: "mailto:as1084@gmail.com",          icon: "Mail"    },
   ],
   formSubject: "Let's Work Together",
@@ -278,8 +282,9 @@ export const footerData: FooterData = {
     { label: "Contact",  href: "#contact"  },
   ],
   socials: [
-    { platform: "GitHub",   url: "https://github.com/yourusername", icon: "Github"  },
-    { platform: "LinkedIn", url: "https://linkedin.com/in/aravind", icon: "Linkedin"},
+    { platform: "GitHub",   url: "https://github.com/ARAVIND123465", icon: "Github"  },
+    { platform: "LinkedIn", url: "https://linkedin.com/in/aravind-s-6382039325", icon: "Linkedin" },
+    { platform: "LeetCode", url: "https://leetcode.com/yourusername", icon: "Code" },
     { platform: "Email",    url: "mailto:as1084@gmail.com",          icon: "Mail"    },
   ],
   copyright: `© ${new Date().getFullYear()} Aravindhan S. All rights reserved.`,

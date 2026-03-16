@@ -42,6 +42,8 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className="font-mono text-xs tracking-widest uppercase text-stone-400 hover:text-white transition-colors"
+                target={link.href.startsWith('http') ? '_blank' : '_self'}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : ''}
               >
                 {link.label}
               </a>
@@ -77,6 +79,8 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className="font-mono text-sm tracking-widest uppercase text-stone-400 hover:text-rose-400 transition-colors"
+                target={link.href.startsWith('http') ? '_blank' : '_self'}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : ''}
               >
                 {link.label}
               </a>

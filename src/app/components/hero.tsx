@@ -81,7 +81,8 @@ export default function Hero() {
           </a>
           <a
             href={heroData.ctaSecondary.href}
-            download="Aravindhan_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-stone-700 hover:border-rose-700 text-stone-400 hover:text-rose-400 font-mono text-xs tracking-widest uppercase px-8 py-4 rounded transition-all"
           >
             {heroData.ctaSecondary.label} <Download size={14} />

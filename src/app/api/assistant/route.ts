@@ -1,90 +1,33 @@
 // src/app/api/assistant/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import {
-  heroData,
-  aboutData,
-  skillCategories,
-  projects,
-  experiences,
-  education,
-  contactData,
-} from "../../../data/data";
+import Groq from "groq-sdk";
+import { getPortfolioContext } from "../../lib/data";
 
-// ── Build a rich system prompt from data.ts ──────────────────
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY!,
+});
 
-function buildSystemPrompt(): string {
-  const skills = skillCategories
-    .map((c) => `  • ${c.category}: ${c.skills.join(", ")}`)
-    .join("\n");
+const SYSTEM_PROMPT = `
+You are a helpful AI assistant for Aravindhan S, embedded in his personal portfolio website.
 
-  const projectList = projects
-    .map(
-      (p) =>
-        `  • ${p.title} (${p.year}) — ${p.longDescription}\n    Tags: ${p.tags.join(", ")}\n    GitHub: ${p.githubUrl}${p.liveUrl ? `\n    Live: ${p.liveUrl}` : ""}`
-    )
-    .join("\n\n");
+INSTRUCTIONS:
+• Your sole purpose is to answer questions about Aravindhan based on the verified portfolio data provided below.
+• Be conversational, friendly, and professional.
+• If a question cannot be answered from the provided context, politely state that you do not have that information.
+• Never fabricate information.
+• Always refer to Aravindhan in the third person (e.g., "he," "Aravindhan," or "his").
+• Keep responses concise and to the point (under 150 words).
+• Use markdown for formatting when it improves readability.
 
-  const experienceList = experiences
-    .map(
-      (e) =>
-        `  • ${e.role} @ ${e.company} (${e.period}, ${e.location})\n    ${e.bullets.join("\n    ")}`
-    )
-    .join("\n\n");
+Here is the portfolio context you must use to answer questions:
 
-  const educationList = education
-    .map((e) => `  • ${e.degree} — ${e.institution} (${e.period}) | CGPA: ${e.cgpa}`)
-    .join("\n");
-
-  return `You are an AI assistant embedded in ${heroData.name}'s personal portfolio website.
-Your sole purpose is to answer questions about ${heroData.name} based on the verified data below.
-Be conversational, friendly, and concise. If something isn't covered in the data, say so honestly.
-Never fabricate information. Always refer to ${heroData.name} in the third person or use "he/his".
-
-═══════════════════════════════════
-  PORTFOLIO DATA FOR ${heroData.name.toUpperCase()}
-═══════════════════════════════════
-
-── IDENTITY ──
-Name:     ${heroData.name}
-Tagline:  ${heroData.tagline}
-Bio:      ${heroData.subTagline}
-Status:   ${heroData.badge}
-
-── ABOUT ──
-${aboutData.bio.join("\n\n")}
-
-Highlights:
-${aboutData.highlights.map((h) => `  • ${h.label}: ${h.value}`).join("\n")}
-
-── SKILLS ──
-${skills}
-
-── PROJECTS ──
-${projectList}
-
-── EXPERIENCE ──
-${experienceList}
-
-── EDUCATION ──
-${educationList}
-
-── CONTACT ──
-Email:    ${contactData.email}
-Phone:    ${contactData.phone}
-Location: ${contactData.location}
-GitHub:   ${contactData.socials.find((s) => s.platform === "GitHub")?.url ?? "N/A"}
-LinkedIn: ${contactData.socials.find((s) => s.platform === "LinkedIn")?.url ?? "N/A"}
+${getPortfolioContext()}
 `;
-}
-
-// ── Message type ─────────────────────────────────────────────
 
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
 }
-
-// ── POST handler ─────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
   try {
@@ -92,47 +35,36 @@ export async function POST(req: NextRequest) {
     const { message, history = [] }: { message: string; history: ChatMessage[] } = body;
 
     if (!message?.trim()) {
-      return NextResponse.json({ error: "Message is required." }, { status: 400 });
+      return NextResponse.json({ error: "Message is required" }, { status: 400 });
     }
 
-    // Build message history for multi-turn context
-    const messages: ChatMessage[] = [
-      ...history.slice(-10), // keep last 10 turns to stay within context limits
+    const messages = [
+      { role: "system", content: SYSTEM_PROMPT },
+      ...history.slice(-10).map((msg) => ({ role: msg.role, content: msg.content })),
       { role: "user", content: message },
     ];
 
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: "claude-3-haiku-20240307",
-        max_tokens: 512,
-        system: buildSystemPrompt(),
-        messages,
-      }),
+    const completion = await groq.chat.completions.create({
+      model: "llama-3.3-70b-versatile",
+       // Changed to a different, stable model
+      messages: messages as any,
+      temperature: 0.7,
+      max_tokens: 1024,
+      top_p: 1,
+      stream: false,
     });
 
-    if (!response.ok) {
-      const err = await response.text();
-      console.error("Anthropic API error:", err);
+    const aiResponse = completion.choices?.[0]?.message?.content ?? "I am unable to answer that at the moment.";
+
+    return NextResponse.json({ answer: aiResponse });
+  } catch (error: any) {
+    console.error("Groq API Error:", error);
+    if (error.status === 429) {
       return NextResponse.json(
-        { error: "AI service unavailable. Please try again later." },
-        { status: 502 }
+        { error: "Rate limit exceeded. Please try again shortly." },
+        { status: 429 }
       );
     }
-
-    const data = await response.json();
-    const answer =
-      data.content?.find((block: { type: string }) => block.type === "text")?.text ??
-      "I couldn't generate a response. Please try again.";
-
-    return NextResponse.json({ answer });
-  } catch (error) {
-    console.error("Assistant route error:", error);
-    return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

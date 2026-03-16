@@ -2,6 +2,7 @@
 
 import { aboutData, education } from '../../data/data';
 import { GraduationCap, Download } from 'lucide-react';
+import Image from 'next/image';
 
 export default function About() {
   return (
@@ -41,13 +42,14 @@ export default function About() {
             {/* Avatar */}
             <div className="relative w-52 h-52 mx-auto md:mx-0">
               <div className="absolute inset-0 rounded-2xl bg-rose-900/40 rotate-3 border border-rose-800/40" />
-              <div className="absolute inset-0 rounded-2xl bg-stone-800 -rotate-1 flex items-center justify-center border border-stone-700">
-                <span
-                  className="text-5xl font-bold text-white"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
-                  AS
-                </span>
+              <div className="absolute inset-0 rounded-2xl bg-stone-800 -rotate-1 flex items-center justify-center border border-stone-700 overflow-hidden">
+                <Image
+                  src="/aravindhan.jpg"
+                  alt="Aravindhan Sampath"
+                  width={208}
+                  height={208}
+                  className="rounded-2xl"
+                />
               </div>
             </div>
 
@@ -109,7 +111,8 @@ export default function About() {
             {/* Download Resume */}
             <a
               href={aboutData.resumeUrl}
-              download="Aravindhan_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="self-start inline-flex items-center gap-2 px-6 py-3 bg-stone-900 border border-stone-700 text-white hover:bg-rose-600 hover:border-rose-600 font-mono text-xs tracking-widest uppercase rounded transition-all"
             >
               Download Resume <Download size={13} />
