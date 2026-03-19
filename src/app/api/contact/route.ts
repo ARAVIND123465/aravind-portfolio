@@ -72,13 +72,14 @@ export async function POST(req: NextRequest) {
     console.log("✅ SMTP transporter verified — credentials are valid");
 
     // ── Sanitize message for HTML ───────────────────────────
-    const safeMessage = String(message)
+    const msgStr = String(message);
+    const safeMessage = msgStr
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/\n/g, "<br/>");
     const truncatedMessage =
-      message.length > 120 ? message.slice(0, 120) + "\u2026" : message;
+      msgStr.length > 120 ? msgStr.slice(0, 120) + "\u2026" : msgStr;
     const linkedInUrl =
       process.env.NEXT_PUBLIC_LINKEDIN_URL ||
       "https://linkedin.com/in/aravind5338/";
@@ -241,5 +242,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
-
