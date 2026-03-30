@@ -28,96 +28,79 @@ export default function About() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Section Label */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-widest uppercase text-cyan-500">
-            About Me
-          </span>
-          <div className="flex-1 h-px bg-stone-800" />
-        </div>
-
-        <div className="grid md:grid-cols-5 gap-14 items-start">
-          {/* Left — Avatar + Highlights */}
-          <div className="md:col-span-2 flex flex-col gap-6">
-            <div className="relative w-52 h-52 mx-auto md:mx-0">
-              <div className="absolute inset-0 rounded-2xl bg-cyan-900/40 rotate-3 border border-cyan-800/40" />
-              <div className="absolute inset-0 rounded-2xl bg-stone-800 -rotate-1 flex items-center justify-center border border-stone-700 overflow-hidden bg-gradient-to-br from-stone-800 to-stone-900">
-                <Image
-                  src={aboutData.avatar}
-                  alt="Aravindhan profile photo"
-                  fill
-                  priority
-                  sizes="208px"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Highlight Cards */}
-            <div className="grid grid-cols-2 gap-3">
-              {aboutData.highlights.map((h) => (
-                <div
-                  key={h.label}
-                  className="bg-stone-900/60 border border-stone-800 rounded-xl p-3 hover:border-cyan-800/60 transition-colors"
-                >
-                  <p className="font-mono text-[10px] text-stone-500 uppercase tracking-widest mb-1">
-                    {h.label}
-                  </p>
-                  <p className="text-white text-xs font-medium leading-snug">
-                    {h.value}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right — Bio + Education + Button */}
-          <div className="md:col-span-3 flex flex-col gap-8">
-            {/* Bio */}
-            <div className="flex flex-col gap-4">
-              {aboutData.bio.map((para, i) => (
-                <p key={i} className="text-stone-400 leading-relaxed text-sm">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
+          
+          {/* Left Column — Bio */}
+          <div className="flex flex-col gap-6">
+            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-cyan-500 font-bold mb-2 block">
+              About
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              A developer <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-500 to-amber-500">who enjoys</span> building useful products.
+            </h2>
+            <div className="flex flex-col gap-6">
+              {aboutData.bio.slice(1).map((para, i) => (
+                <p key={i} className="text-stone-400 leading-relaxed text-base font-medium">
                   {para}
                 </p>
               ))}
             </div>
 
-            {/* Education */}
-            <div>
-              <h3 className="flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-stone-500 mb-5">
-                <GraduationCap size={13} className="text-cyan-500" /> Education
-              </h3>
-              <div className="flex flex-col gap-4">
-                {education.map((edu) => (
-                  <div
-                    key={edu.institution + edu.degree}
-                    className="flex justify-between items-start border-l-2 border-stone-700 pl-4 py-1 hover:border-cyan-600 transition-colors"
-                  >
-                    <div>
-                      <p className="text-white text-sm font-semibold">{edu.institution}</p>
-                      <p className="text-stone-500 text-xs mt-0.5">{edu.degree}</p>
-                    </div>
-                    <div className="text-right shrink-0 ml-4">
-                      <span className="font-mono text-xs text-cyan-400 bg-cyan-950/50 border border-cyan-900/50 px-2 py-0.5 rounded-full">
-                        {edu.cgpa}
-                      </span>
-                      <p className="font-mono text-[10px] text-stone-600 mt-1">{edu.period}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Download Resume */}
+            {/* Download Resume Link (matches screenshot style) */}
             <a
               href={aboutData.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="self-start inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-500 hover:to-orange-400 text-white font-mono text-[10px] tracking-widest uppercase rounded transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]"
+              download="Aravindhan_S_Resume.pdf"
+              className="mt-8 self-start inline-flex items-center gap-2 group text-white font-mono text-[11px] tracking-widest uppercase transition-all"
             >
-              Download Resume <Download size={13} />
+              <span className="relative pb-1 border-b border-stone-800 group-hover:border-cyan-500 transition-colors">
+                Download Resume
+              </span>
+              <Download size={12} className="text-cyan-500 group-hover:translate-y-0.5 transition-transform" />
             </a>
           </div>
+
+          {/* Right Column — Education Timeline */}
+          <div className="bg-stone-900/30 border border-stone-800/60 rounded-3xl p-8 backdrop-blur-sm">
+            <div className="flex items-center justify-between mb-10">
+              <h3 className="font-mono text-xs tracking-widest uppercase text-white font-semibold">
+                Education
+              </h3>
+              <span className="font-mono text-[10px] tracking-widest uppercase text-stone-600">
+                Timeline
+              </span>
+            </div>
+
+            <div className="relative flex flex-col gap-10">
+              {/* Timeline Line */}
+              <div className="absolute left-[7px] top-2 bottom-2 w-px bg-stone-800" />
+
+              {education.map((edu, idx) => (
+                <div key={edu.institution + idx} className="relative pl-8 group">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-0 top-1.5 w-[15px] h-[15px] bg-stone-950 border-2 border-stone-800 rounded-full flex items-center justify-center transition-all group-hover:border-cyan-500">
+                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-600 animate-pulse" />
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <div className="flex justify-between items-start gap-4">
+                      <h4 className="text-white font-bold text-sm tracking-tight group-hover:text-cyan-400 transition-colors">
+                        {edu.degree}
+                      </h4>
+                      <span className="font-mono text-[10px] text-stone-500 shrink-0 mt-1">
+                        {edu.period}
+                      </span>
+                    </div>
+                    <p className="text-stone-400 text-xs font-medium">
+                      {edu.institution} • {edu.cgpa}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

@@ -88,6 +88,22 @@
   .bg-glow-cyan {
     background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%);
   }
+  .animate-pulse-slow {
+    animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .animate-drift {
+    animation: drift 20s linear infinite;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+@keyframes drift {
+  from { transform: translateX(0) translateY(0); }
+  to { transform: translateX(100px) translateY(-50px); }
 }
 
 ::selection {

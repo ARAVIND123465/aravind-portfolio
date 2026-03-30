@@ -110,10 +110,10 @@ export const navBrand = "Aravindhan.dev";
 export const heroData: HeroData = {
   greeting:     "Hey there, I'm",
   name:         "Aravindhan S",
-  tagline:      "Full-Stack Developer & ML Enthusiast",
-  subTagline:   "Building beautiful web experiences and intelligent systems — from pixels to predictions.",
+  tagline:      "Software Developer specializing in Full-Stack & AI-driven applications.",
+  subTagline:   "I build scalable systems and intelligent solutions that solve real-world problems.",
   ctaPrimary:   { label: "View My Work",    href: "#projects"      },
-  ctaSecondary: { label: "Download Resume", href: "https://pdf.ac/ElQDGRuX" },
+  ctaSecondary: { label: "Download Resume", href: "/sample_intern_resume.pdf" },
   badge:        "Open to Opportunities 🚀",
 };
 
@@ -122,6 +122,8 @@ export const heroData: HeroData = {
 export const aboutData: AboutData = {
   avatar: "/avatar.jpeg",
   bio: [
+    "A developer who enjoys building useful products.",
+    "I like working across the stack, keeping things simple, and shipping features that feel polished. I care about readable code, performance, and user experience.",
     "I'm a Master of Computer Applications student at SRM University with a deep passion for crafting high-quality digital products. From frontend interfaces to machine learning pipelines, I love working across the full spectrum of software development.",
     "My journey started with a B.Com (IT) from Hindusthan College of Arts and Science, where I discovered my love for programming. Since then, I've interned at Infosys, Synovers, and Corizo — sharpening my skills in Python, ML, and modern frontend frameworks.",
     "When I'm not coding, I'm exploring new technologies, contributing to open-source, and building tools that solve real problems.",
@@ -129,12 +131,12 @@ export const aboutData: AboutData = {
   highlights: [
     { label: "Degree",     value: "MCA @ SRM University"      },
     { label: "CGPA",       value: "8.0 / 10"                  },
-    { label: "Location",   value: "Krishnagiri, Tamil Nadu"    },
+    { label: "Location",   value: "Chennai, Tamil Nadu"    },
     { label: "Experience", value: "3 Internships"              },
     { label: "Focus",      value: "Web Dev + Machine Learning" },
     { label: "Status",     value: "Available for Work 🟢"     },
   ],
-  resumeUrl: "https://pdf.ac/ElQDGRuX",
+  resumeUrl: "/sample_intern_resume.pdf",
 };
 
 // ── Education ─────────────────────────────────────────────────
@@ -173,7 +175,7 @@ export const certificates: Certificate[] = [
     title:  "Cybersecurity Virtual Internship",
     issuer: "Deloitte",
     year:   "2024",
-    link:   "",
+    link:   "/deloitte_cyber_security.pdf",
   },
   {
     title:  "Machine Learning Specialization",
@@ -182,10 +184,10 @@ export const certificates: Certificate[] = [
     link:   "https://www.coursera.org/account/accomplishments/verify/LR1H57YO9FTY",
   },
   {
-    title:  "AWS AI Agent & Cloud Fundamentals",
+    title:  "AWS Academy Graduate - AWS Academy Cloud Foundations",
     issuer: "Amazon Web Services (AWS)",
     year:   "2025",
-    link:   "https://pdf.ac/ml789G76",
+    link:   "/aws_academy_certificate.pdf",
   },
 ];
 

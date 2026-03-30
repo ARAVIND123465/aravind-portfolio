@@ -31,12 +31,19 @@ export default function Skills() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Section Label */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-widest uppercase text-cyan-500">
-            Skills & Technologies
+        {/* Section Label & Main Title */}
+        <div className="flex flex-col gap-6 mb-16">
+          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-cyan-500 font-bold">
+            Skills
           </span>
-          <div className="flex-1 h-px bg-stone-800" />
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+               Tools I use to build<span className="text-cyan-500">.</span>
+             </h2>
+             <p className="text-stone-500 text-sm font-medium max-w-md md:text-right">
+               A blend of languages, frameworks, and core CS fundamentals.
+             </p>
+          </div>
         </div>
 
         {/* Skills Grid */}
