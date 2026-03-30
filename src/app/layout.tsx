@@ -5,6 +5,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import AIAssistant from "./components/ai-assistant"; // Import the component
 import BackgroundAnimation from "./components/BackgroundAnimation"; // Import the glowing background
+import VisitorCounter from "./components/visitor-counter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <BackgroundAnimation />
+        <VisitorCounter />
         <Navbar />
         <main>{children}</main>
         <Footer />

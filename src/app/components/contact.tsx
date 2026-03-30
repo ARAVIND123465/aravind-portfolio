@@ -65,7 +65,7 @@ export default function Contact() {
         style={{
           top: '-80px', right: '-80px',
           width: 500, height: 500,
-          background: 'radial-gradient(circle, rgba(225,29,72,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%)',
           filter: 'blur(60px)',
         }}
       />
@@ -73,7 +73,7 @@ export default function Contact() {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Label */}
         <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-widest uppercase text-rose-500">
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan-500">
             Get In Touch
           </span>
           <div className="flex-1 h-px bg-stone-800" />
@@ -90,7 +90,7 @@ export default function Contact() {
               }}
             >
               Let&apos;s build something{' '}
-              <span className="text-rose-500">remarkable.</span>
+              <span className="text-cyan-500">remarkable.</span>
             </h2>
             <p className="text-stone-400 text-sm leading-relaxed mb-10 max-w-sm">
               I&apos;m actively looking for internship and full-time opportunities.
@@ -101,22 +101,22 @@ export default function Contact() {
             {/* Contact details */}
             <div className="flex flex-col gap-5 mb-10">
               <div className="flex items-center gap-3 text-stone-300 text-sm">
-                <div className="w-8 h-8 rounded-lg bg-rose-950/50 border border-rose-900/40 flex items-center justify-center shrink-0">
-                  <Mail size={14} className="text-rose-500" />
+                <div className="w-8 h-8 rounded-lg bg-cyan-950/50 border border-cyan-900/40 flex items-center justify-center shrink-0">
+                  <Mail size={14} className="text-cyan-500" />
                 </div>
-                <a href={`mailto:${contactData.email}`} className="hover:text-rose-400 transition-colors">
+                <a href={`mailto:${contactData.email}`} className="hover:text-cyan-400 transition-colors">
                   {contactData.email}
                 </a>
               </div>
               <div className="flex items-center gap-3 text-stone-300 text-sm">
-                <div className="w-8 h-8 rounded-lg bg-rose-950/50 border border-rose-900/40 flex items-center justify-center shrink-0">
-                  <Phone size={14} className="text-rose-500" />
+                <div className="w-8 h-8 rounded-lg bg-cyan-950/50 border border-cyan-900/40 flex items-center justify-center shrink-0">
+                  <Phone size={14} className="text-cyan-500" />
                 </div>
                 <span>{contactData.phone}</span>
               </div>
               <div className="flex items-center gap-3 text-stone-300 text-sm">
-                <div className="w-8 h-8 rounded-lg bg-rose-950/50 border border-rose-900/40 flex items-center justify-center shrink-0">
-                  <MapPin size={14} className="text-rose-500" />
+                <div className="w-8 h-8 rounded-lg bg-cyan-950/50 border border-cyan-900/40 flex items-center justify-center shrink-0">
+                  <MapPin size={14} className="text-cyan-500" />
                 </div>
                 <span>{contactData.location}</span>
               </div>
@@ -133,7 +133,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={s.platform}
-                    className="w-10 h-10 border border-stone-700 rounded-lg flex items-center justify-center text-stone-400 hover:border-rose-700 hover:text-rose-400 transition-all"
+                    className="w-10 h-10 border border-stone-700 rounded-lg flex items-center justify-center text-stone-400 hover:border-cyan-700 hover:text-cyan-400 transition-all"
                   >
                     <Icon size={16} />
                   </a>
@@ -146,8 +146,8 @@ export default function Contact() {
         <div className="bg-stone-900/40 border border-stone-800 rounded-2xl p-8">
           {status === 'success' ? (
             <div className="flex flex-col items-center justify-center py-16 text-center">
-              <div className="w-16 h-16 bg-rose-950/40 border border-rose-800/60 rounded-full flex items-center justify-center mb-5">
-                <Mail size={24} className="text-rose-400" />
+              <div className="w-16 h-16 bg-cyan-950/40 border border-cyan-800/60 rounded-full flex items-center justify-center mb-5">
+                <Mail size={24} className="text-cyan-400" />
               </div>
               <h3
                 className="text-white text-xl font-bold mb-2"
@@ -160,7 +160,7 @@ export default function Contact() {
               </p>
               <button
                 onClick={() => setStatus('idle')}
-                className="font-mono text-xs tracking-widest uppercase text-rose-500 hover:text-rose-400 transition-colors"
+                className="font-mono text-xs tracking-widest uppercase text-cyan-500 hover:text-cyan-400 transition-colors"
               >
                 Send another message →
               </button>
@@ -179,7 +179,7 @@ export default function Contact() {
                   placeholder="John Doe"
                   required
                   disabled={status === 'loading'}
-                  className="w-full bg-stone-800/50 border border-stone-700 rounded-lg px-4 py-3 text-white text-sm placeholder:text-stone-600 focus:outline-none focus:border-rose-600 transition-colors disabled:opacity-50"
+                  className="w-full bg-stone-800/50 border border-stone-700 rounded-lg px-4 py-3 text-white text-sm placeholder:text-stone-600 focus:outline-none focus:border-cyan-600 transition-colors disabled:opacity-50"
                 />
               </div>
               <div>
@@ -194,7 +194,7 @@ export default function Contact() {
                   placeholder="you@example.com"
                   required
                   disabled={status === 'loading'}
-                  className="w-full bg-stone-800/50 border border-stone-700 rounded-lg px-4 py-3 text-white text-sm placeholder:text-stone-600 focus:outline-none focus:border-rose-600 transition-colors disabled:opacity-50"
+                  className="w-full bg-stone-800/50 border border-stone-700 rounded-lg px-4 py-3 text-white text-sm placeholder:text-stone-600 focus:outline-none focus:border-cyan-600 transition-colors disabled:opacity-50"
                 />
               </div>
               <div>
@@ -209,13 +209,13 @@ export default function Contact() {
                   placeholder="Let's work together..."
                   required
                   disabled={status === 'loading'}
-                  className="w-full bg-stone-800/50 border border-stone-700 rounded-lg px-4 py-3 text-white text-sm placeholder:text-stone-600 focus:outline-none focus:border-rose-600 transition-colors resize-none disabled:opacity-50"
+                  className="w-full bg-stone-800/50 border border-stone-700 rounded-lg px-4 py-3 text-white text-sm placeholder:text-stone-600 focus:outline-none focus:border-cyan-600 transition-colors resize-none disabled:opacity-50"
                 />
               </div>
 
               {/* Error message */}
               {status === 'error' && (
-                <p className="text-rose-400 text-xs font-mono bg-rose-950/30 border border-rose-900/40 rounded-lg px-4 py-3">
+                <p className="text-cyan-400 text-xs font-mono bg-cyan-950/30 border border-cyan-900/40 rounded-lg px-4 py-3">
                   ⚠ {errorMsg}
                 </p>
               )}
@@ -223,7 +223,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-3.5 bg-rose-600 hover:bg-rose-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-mono text-xs tracking-widest uppercase rounded-lg transition-all flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-rose-900/30"
+                className="w-full py-3.5 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-mono text-xs tracking-widest uppercase rounded-lg transition-all flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-cyan-900/30"
               >
                 {status === 'loading' ? (
                   <>

@@ -23,7 +23,7 @@ export default function Projects() {
         style={{
           bottom: '-80px', left: '-80px',
           width: 480, height: 480,
-          background: 'radial-gradient(circle, rgba(225,29,72,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%)',
           filter: 'blur(60px)',
         }}
       />
@@ -31,7 +31,7 @@ export default function Projects() {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Label */}
         <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-widest uppercase text-rose-500">
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan-500">
             Projects
           </span>
           <div className="flex-1 h-px bg-stone-800" />
@@ -44,7 +44,7 @@ export default function Projects() {
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Things I&apos;ve{' '}
-            <span className="text-rose-500">Built.</span>
+            <span className="text-cyan-500">Built.</span>
           </h2>
         </div>
 
@@ -53,10 +53,10 @@ export default function Projects() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="relative bg-stone-900/50 border border-stone-800 rounded-2xl overflow-hidden hover:border-rose-800/60 transition-all group"
+              className="relative bg-stone-900/50 border border-stone-800 rounded-2xl overflow-hidden hover:border-cyan-800/60 transition-all group"
             >
               {/* Top accent line */}
-              <div className="h-px bg-gradient-to-r from-rose-600/60 via-rose-500/30 to-transparent" />
+              <div className="h-px bg-gradient-to-r from-cyan-600/60 via-cyan-500/30 to-transparent" />
 
               <div className="p-7 flex flex-col h-full">
                 {/* Header: Icon & Tags */}
@@ -68,7 +68,7 @@ export default function Projects() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-mono text-[10px] tracking-widest uppercase bg-stone-800 text-stone-400 border border-stone-700 px-2.5 py-1 rounded-full group-hover:border-rose-900/60 transition-colors"
+                        className="font-mono text-[10px] tracking-widest uppercase bg-stone-800 text-stone-400 border border-stone-700 px-2.5 py-1 rounded-full group-hover:border-cyan-900/60 transition-colors"
                       >
                         {tag}
                       </span>
@@ -107,7 +107,7 @@ export default function Projects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-stone-500 hover:text-rose-400 transition-colors"
+                        className="text-stone-500 hover:text-cyan-400 transition-colors"
                         aria-label="Live site"
                       >
                         <ExternalLink size={18} />
@@ -126,7 +126,7 @@ export default function Projects() {
             href={githubUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-stone-500 hover:text-rose-500 transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-stone-500 hover:text-cyan-500 transition-colors"
           >
             View All on GitHub <ArrowRight size={14} />
           </a>

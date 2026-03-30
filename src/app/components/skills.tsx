@@ -25,7 +25,7 @@ export default function Skills() {
         style={{
           top: '-80px', right: '-80px',
           width: 480, height: 480,
-          background: 'radial-gradient(circle, rgba(225,29,72,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%)',
           filter: 'blur(60px)',
         }}
       />
@@ -33,7 +33,7 @@ export default function Skills() {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Label */}
         <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-widest uppercase text-rose-500">
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan-500">
             Skills & Technologies
           </span>
           <div className="flex-1 h-px bg-stone-800" />
@@ -46,11 +46,11 @@ export default function Skills() {
             return (
               <div
                 key={cat.category}
-                className="bg-stone-900/50 border border-stone-800 rounded-xl p-5 hover:border-rose-800/60 hover:bg-stone-900 transition-all group"
+                className="bg-stone-900/50 border border-stone-800 rounded-xl p-5 hover:border-cyan-800/60 hover:bg-stone-900 transition-all group"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <Icon size={13} className="text-rose-500" />
-                  <h3 className="font-mono text-[10px] tracking-widest uppercase text-rose-500">
+                  <Icon size={13} className="text-cyan-500" />
+                  <h3 className="font-mono text-[10px] tracking-widest uppercase text-cyan-500">
                     {cat.category}
                   </h3>
                 </div>
@@ -68,8 +68,8 @@ export default function Skills() {
 
         {/* Internship Experience */}
         <div className="flex items-center gap-3 mb-10">
-          <Briefcase size={13} className="text-rose-500" />
-          <span className="font-mono text-xs tracking-widest uppercase text-rose-500">
+          <Briefcase size={13} className="text-cyan-500" />
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan-500">
             Internship Experience
           </span>
           <div className="flex-1 h-px bg-stone-800" />
@@ -79,7 +79,7 @@ export default function Skills() {
           {experiences.map((exp) => (
             <div
               key={exp.company + exp.role}
-              className="border border-stone-800 rounded-xl p-7 hover:border-rose-800/50 transition-colors bg-stone-900/30 group"
+              className="border border-stone-800 rounded-xl p-7 hover:border-cyan-800/50 transition-colors bg-stone-900/30 group"
             >
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-5">
                 <div>
@@ -89,7 +89,7 @@ export default function Skills() {
                   >
                     {exp.role}
                   </h3>
-                  <p className="text-rose-500 font-mono text-xs tracking-widest mt-1">
+                  <p className="text-cyan-500 font-mono text-xs tracking-widest mt-1">
                     {exp.company}
                   </p>
                 </div>
@@ -101,7 +101,7 @@ export default function Skills() {
               <ul className="flex flex-col gap-2.5">
                 {exp.bullets.map((b, i) => (
                   <li key={i} className="flex items-start gap-3 text-stone-400 text-sm leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600 mt-1.5 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 mt-1.5 shrink-0" />
                     {b}
                   </li>
                 ))}

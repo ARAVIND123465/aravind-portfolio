@@ -22,7 +22,7 @@ export default function About() {
         style={{
           bottom: '-100px', left: '-100px',
           width: 500, height: 500,
-          background: 'radial-gradient(circle, rgba(225,29,72,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%)',
           filter: 'blur(60px)',
         }}
       />
@@ -30,7 +30,7 @@ export default function About() {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Label */}
         <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-widest uppercase text-rose-500">
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan-500">
             About Me
           </span>
           <div className="flex-1 h-px bg-stone-800" />
@@ -40,7 +40,7 @@ export default function About() {
           {/* Left — Avatar + Highlights */}
           <div className="md:col-span-2 flex flex-col gap-6">
             <div className="relative w-52 h-52 mx-auto md:mx-0">
-              <div className="absolute inset-0 rounded-2xl bg-rose-900/40 rotate-3 border border-rose-800/40" />
+              <div className="absolute inset-0 rounded-2xl bg-cyan-900/40 rotate-3 border border-cyan-800/40" />
               <div className="absolute inset-0 rounded-2xl bg-stone-800 -rotate-1 flex items-center justify-center border border-stone-700 overflow-hidden bg-gradient-to-br from-stone-800 to-stone-900">
                 <Image
                   src={aboutData.avatar}
@@ -58,7 +58,7 @@ export default function About() {
               {aboutData.highlights.map((h) => (
                 <div
                   key={h.label}
-                  className="bg-stone-900/60 border border-stone-800 rounded-xl p-3 hover:border-rose-800/60 transition-colors"
+                  className="bg-stone-900/60 border border-stone-800 rounded-xl p-3 hover:border-cyan-800/60 transition-colors"
                 >
                   <p className="font-mono text-[10px] text-stone-500 uppercase tracking-widest mb-1">
                     {h.label}
@@ -85,20 +85,20 @@ export default function About() {
             {/* Education */}
             <div>
               <h3 className="flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-stone-500 mb-5">
-                <GraduationCap size={13} className="text-rose-500" /> Education
+                <GraduationCap size={13} className="text-cyan-500" /> Education
               </h3>
               <div className="flex flex-col gap-4">
                 {education.map((edu) => (
                   <div
                     key={edu.institution + edu.degree}
-                    className="flex justify-between items-start border-l-2 border-stone-700 pl-4 py-1 hover:border-rose-600 transition-colors"
+                    className="flex justify-between items-start border-l-2 border-stone-700 pl-4 py-1 hover:border-cyan-600 transition-colors"
                   >
                     <div>
                       <p className="text-white text-sm font-semibold">{edu.institution}</p>
                       <p className="text-stone-500 text-xs mt-0.5">{edu.degree}</p>
                     </div>
                     <div className="text-right shrink-0 ml-4">
-                      <span className="font-mono text-xs text-rose-400 bg-rose-950/50 border border-rose-900/50 px-2 py-0.5 rounded-full">
+                      <span className="font-mono text-xs text-cyan-400 bg-cyan-950/50 border border-cyan-900/50 px-2 py-0.5 rounded-full">
                         {edu.cgpa}
                       </span>
                       <p className="font-mono text-[10px] text-stone-600 mt-1">{edu.period}</p>
@@ -113,7 +113,7 @@ export default function About() {
               href={aboutData.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="self-start inline-flex items-center gap-2 px-6 py-3 bg-stone-900 border border-stone-700 text-white hover:bg-rose-600 hover:border-rose-600 font-mono text-xs tracking-widest uppercase rounded transition-all"
+              className="self-start inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-500 hover:to-orange-400 text-white font-mono text-[10px] tracking-widest uppercase rounded transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]"
             >
               Download Resume <Download size={13} />
             </a>

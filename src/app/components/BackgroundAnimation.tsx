@@ -35,41 +35,41 @@ export default function BackgroundAnimation() {
       />
 
       {/* 2. Soft Gradient Blobs (Animated) */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-          rotate: [0, 90, 0],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full mix-blend-screen filter blur-[100px]"
-        style={{ background: "radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%)" }}
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.5, 1],
-          opacity: [0.2, 0.4, 0.2],
-          rotate: [0, -90, 0],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute top-[20%] -right-[20%] w-[60%] h-[60%] rounded-full mix-blend-screen filter blur-[120px]"
-        style={{ background: "radial-gradient(circle, rgba(225,29,72,0.15) 0%, transparent 70%)" }}
-      />
-      <motion.div
-        animate={{
-          y: [0, -50, 0],
-          opacity: [0.1, 0.3, 0.1],
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-[20%] left-[20%] w-[70%] h-[50%] rounded-full mix-blend-screen filter blur-[100px]"
-        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.1) 0%, transparent 70%)" }}
-      />
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+            rotate: [0, 90, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full mix-blend-screen filter blur-[100px]"
+          style={{ background: "radial-gradient(circle, rgba(0,242,255,0.15) 0%, transparent 70%)" }}
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.15, 0.35, 0.15],
+            rotate: [0, -90, 0],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-[20%] -right-[20%] w-[60%] h-[60%] rounded-full mix-blend-screen filter blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)" }}
+        />
+        <motion.div
+          animate={{
+            y: [0, -50, 0],
+            opacity: [0.05, 0.2, 0.05],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -bottom-[20%] left-[20%] w-[70%] h-[50%] rounded-full mix-blend-screen filter blur-[100px]"
+          style={{ background: "radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%)" }}
+        />
 
       {/* 3. Floating Particles */}
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-white"
+          className="absolute rounded-full bg-cyan-500/20"
           style={{
             width: p.size,
             height: p.size,

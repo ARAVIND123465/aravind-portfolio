@@ -33,7 +33,7 @@ export default function Footer() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="font-mono text-xs tracking-wider uppercase text-stone-500 hover:text-rose-400 transition-colors"
+                  className="font-mono text-xs tracking-wider uppercase text-stone-500 hover:text-cyan-400 transition-colors"
                 >
                   {link.label}
                 </a>
@@ -52,7 +52,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={s.platform}
-                  className="text-stone-500 hover:text-rose-400 transition-colors"
+                  className="text-stone-500 hover:text-cyan-400 transition-colors"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
