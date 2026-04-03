@@ -71,6 +71,12 @@ export interface Certificate {
   issuer: string;
   year: string;
   link?: string;
+  description?: string;
+  bullets?: string[];
+  startDate?: string;
+  endDate?: string;
+  badgeIcon?: string;
+  afterSkills?: string;
 }
 
 export interface ContactData {
@@ -95,7 +101,7 @@ export const navLinks: NavLink[] = [
     { label: 'Home', href: '#hero' },
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
-    { label: 'Certificates', href: '#certificates' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
     { label: 'GitHub', href: 'https://github.com/ARAVIND123465' },
@@ -174,20 +180,62 @@ export const certificates: Certificate[] = [
   {
     title:  "Cybersecurity Virtual Internship",
     issuer: "Deloitte",
-    year:   "2024",
+    year:   "2026",
     link:   "/deloitte_cyber_security.pdf",
+    startDate: "Mar 2026",
+    endDate: "Mar 2026",
+    badgeIcon: "🛡️",
+    description:
+      "Successfully completed the Deloitte Cyber Security Virtual Internship, gaining practical exposure to real-world cybersecurity concepts and industry practices. Worked on simulated tasks involving threat identification, risk assessment, security analysis, and protecting organizational systems from cyber threats. Developed an understanding of cybersecurity frameworks, data protection strategies, and security best practices used in enterprise environments.",
+    bullets: [
+      "Cyber Security Fundamentals",
+      "Risk Assessment",
+      "Security Awareness & Best Practices",
+      "Data Protection & Privacy Concepts",
+      "Network Security Basic",
+      "Security Analysis & Reporting",
+    ],
   },
   {
-    title:  "Machine Learning Specialization",
-    issuer: "Coursera",
-    year:   "2024",
-    link:   "https://www.coursera.org/account/accomplishments/verify/LR1H57YO9FTY",
+    title:  "Software Engineering Virtual Internship",
+    issuer: "JPMorgan Chase & Co.",
+    year:   "2026",
+    link:   "/jp%20morgan%20.pdf",
+    startDate: "Jan 2026",
+    endDate: "Apr 2026",
+    badgeIcon: "🏦",
+    description:
+      "Completed a software engineering job simulation through Forage, gaining hands-on experience with enterprise-grade backend technologies used at JPMorgan Chase. Worked on real-world tasks including setting up project infrastructure, integrating Kafka for event-driven communication, and designing REST API controllers.",
+    bullets: [
+      "Project Setup & Configuration",
+      "Kafka Integration",
+      "H2 In-Memory Database Integration",
+      "REST API Integration",
+      "REST API Controller Design",
+    ],
   },
   {
     title:  "AWS Academy Graduate - AWS Academy Cloud Foundations",
     issuer: "Amazon Web Services (AWS)",
-    year:   "2025",
+    year:   "2026",
     link:   "/aws_academy_certificate.pdf",
+    startDate: "Mar 2026",
+    endDate: "Mar 2026",
+    badgeIcon: "☁️",
+    bullets: [
+      "AI",
+      "AI Fundamentals",
+      "AI Use Cases",
+      "Amazon Bedrock",
+      "AWS",
+      "AWS Cloud",
+      "Foundation Models",
+      "Generative AI",
+      "Prompt Engineering",
+      "Responsible AI",
+    ],
+    afterSkills:
+      "I have successfully earned the AWS Academy Graduate – Generative AI Foundations certification. This learning experience strengthened my understanding of Generative AI concepts and how artificial intelligence solutions can be built and deployed using AWS cloud technologies.",
   },
 ];
 
@@ -238,27 +286,27 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Languages",
     icon:     "Code2",
-    skills:   ["JavaScript", "Python", "Java", "C++", "C", "HTML", "CSS"],
+    skills:   ["Java","PYTHON","JAVASCRIPT","C"],
   },
   {
     category: "Frontend",
     icon:     "Monitor",
-    skills:   ["React.js", "Next.js", "Angular", "Vue.js", "Bootstrap", "Tailwind CSS"],
+    skills:   ["React.js", "HTML", "CSS", "JS","Tailwind CSS","Bootstrap","REST API"],
   },
   {
     category: "Backend & ML",
     icon:     "Server",
-    skills:   ["Node.js", "Machine Learning", "Scikit-learn", "Pandas", "NumPy"],
+    skills:   ["Node.js", "EXPRESS.JS","DJANGO","REST API","Pandas","Data Preprocessing",""],
   },
   {
     category: "CS Fundamentals",
     icon:     "BookOpen",
-    skills:   ["Data Structures", "Algorithms", "OOP", "REST APIs"],
+    skills:   ["Data Structures", "DBMS", "OOP", "NLP / ML",""],
   },
   {
     category: "Tools",
     icon:     "Wrench",
-    skills:   ["Git", "GitHub", "VS Code", "Figma", "Postman"],
+    skills:   ["Git", "GitHub", "VS Code", "Antigravity", "Cursor","N8N",],
   },
 ];
 

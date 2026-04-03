@@ -9,17 +9,24 @@ export default function VisitorCounter() {
   const [showHUD, setShowHUD] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowHUD(true);
-    }, 3000);
-
     const fetchCount = async () => {
+      // Show immediately so the "Live_Cloud_Count" doesn't look stuck
+      setShowHUD(true);
       try {
-        const response = await fetch('https://api.api-ninjas.com/v1/counter?id=aravindhan_portfolio_global&hit=true', {
-          headers: {
-            'X-Api-Key': 'FJCitd9noaxPRPCKSPBlgBF0cpnWfg0FkyMtpqjd'
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), 6500);
+
+        const response = await fetch(
+          'https://api.api-ninjas.com/v1/counter?id=aravindhan_portfolio_global&hit=true',
+          {
+            headers: {
+              'X-Api-Key': 'FJCitd9noaxPRPCKSPBlgBF0cpnWfg0FkyMtpqjd',
+            },
+            signal: controller.signal,
           }
-        });
+        );
+
+        window.clearTimeout(timeoutId);
         const data = await response.json();
         if (data.value !== undefined) {
           setCount(data.value); // Showing raw value from API-Ninjas
@@ -33,7 +40,9 @@ export default function VisitorCounter() {
     };
 
     fetchCount();
-    return () => clearTimeout(timer);
+    return () => {
+      setIsLoading(false);
+    };
   }, []);
 
   if (!showHUD) return null;

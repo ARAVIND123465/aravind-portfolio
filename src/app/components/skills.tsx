@@ -1,11 +1,137 @@
 'use client';
 
-import { skillCategories, experiences } from '../../data/data';
+import { useRef, useState } from 'react';
+import { skillCategories, experiences, type Experience } from '../../data/data';
 import { Briefcase, Code2, Monitor, Server, BookOpen, Wrench } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   Code2, Monitor, Server, BookOpen, Wrench,
 };
+
+function ExperienceCard({ exp }: { exp: Experience }) {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [ripple, setRipple] = useState<{ x: number; y: number; key: number } | null>(null);
+  const rippleTimerRef = useRef<number | null>(null);
+
+  const triggerRipple = (clientX: number, clientY: number) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    setRipple({ x, y, key: Date.now() });
+
+    if (rippleTimerRef.current) window.clearTimeout(rippleTimerRef.current);
+    rippleTimerRef.current = window.setTimeout(() => {
+      setRipple(null);
+    }, 900);
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className="relative border border-stone-800 rounded-xl p-7 bg-stone-900/30 overflow-hidden group cursor-pointer transition-colors hover:border-cyan-800/50 hover:bg-stone-900"
+      onPointerEnter={(e) => {
+        if (e.pointerType === 'mouse') setIsHovered(true);
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === 'mouse') setIsHovered(false);
+      }}
+      onPointerDown={(e) => {
+        // Touch/click ripple
+        if (e.pointerType !== 'mouse') {
+          triggerRipple(e.clientX, e.clientY);
+        }
+      }}
+      onClick={(e) => {
+        // Also support mouse click as a tap-like effect
+        if (e.detail === 1) triggerRipple(e.clientX, e.clientY);
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`${exp.role} at ${exp.company}`}
+    >
+      <style>{`
+        @keyframes rippleExpand {
+          from { opacity: 0.7; transform: scale(0.4); }
+          to { opacity: 0; transform: scale(1.8); }
+        }
+        @keyframes sweepGlow {
+          0% { transform: translateX(-60%); opacity: 0; }
+          25% { opacity: 1; }
+          100% { transform: translateX(60%); opacity: 0; }
+        }
+      `}</style>
+
+      {/* Gradient sweep on hover/interact */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          opacity: isHovered ? 1 : 0,
+          transition: 'opacity 250ms ease',
+        }}
+      >
+        <div
+          className="absolute -top-20 left-1/2 w-[260px] h-[160px] bg-gradient-to-r from-cyan-400/20 via-cyan-400/5 to-transparent blur-2xl"
+          style={{
+            transform: 'translateX(-50%)',
+            animation: isHovered ? 'sweepGlow 900ms ease-out both' : undefined,
+          }}
+        />
+      </div>
+
+      {/* Ripple */}
+      {ripple && (
+        <span
+          key={ripple.key}
+          className="pointer-events-none absolute rounded-full bg-cyan-400/20"
+          style={{
+            width: 18,
+            height: 18,
+            left: ripple.x,
+            top: ripple.y,
+            transform: 'translate(-50%, -50%)',
+            animation: 'rippleExpand 850ms ease-out both',
+          }}
+        />
+      )}
+
+      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-5 relative z-10">
+        <div>
+          <h3
+            className="text-white font-bold text-lg"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            {exp.role}
+          </h3>
+          <p className="text-cyan-500 font-mono text-xs tracking-widest mt-1">
+            {exp.company}
+          </p>
+        </div>
+        <div className="text-right shrink-0">
+          <p className="font-mono text-xs text-stone-400">{exp.period}</p>
+          <p className="font-mono text-xs text-stone-600 mt-1">{exp.location}</p>
+        </div>
+      </div>
+
+      <div className="relative z-10">
+        <div className="flex flex-wrap gap-2.5">
+          {exp.bullets.map((b, i) => (
+            <span
+              // bullets are unique enough; use i for safety
+              key={`${i}-${b}`}
+              className="inline-flex items-start font-mono text-[11px] tracking-wide text-stone-300 border border-stone-800 bg-stone-950/20 rounded-full px-3 py-1"
+            >
+              {b}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Skills() {
   return (
@@ -84,36 +210,7 @@ export default function Skills() {
 
         <div className="flex flex-col gap-5">
           {experiences.map((exp) => (
-            <div
-              key={exp.company + exp.role}
-              className="border border-stone-800 rounded-xl p-7 hover:border-cyan-800/50 transition-colors bg-stone-900/30 group"
-            >
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-5">
-                <div>
-                  <h3
-                    className="text-white font-bold text-lg"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
-                    {exp.role}
-                  </h3>
-                  <p className="text-cyan-500 font-mono text-xs tracking-widest mt-1">
-                    {exp.company}
-                  </p>
-                </div>
-                <div className="text-right shrink-0">
-                  <p className="font-mono text-xs text-stone-400">{exp.period}</p>
-                  <p className="font-mono text-xs text-stone-600 mt-1">{exp.location}</p>
-                </div>
-              </div>
-              <ul className="flex flex-col gap-2.5">
-                {exp.bullets.map((b, i) => (
-                  <li key={i} className="flex items-start gap-3 text-stone-400 text-sm leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 mt-1.5 shrink-0" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ExperienceCard key={exp.company + exp.role} exp={exp} />
           ))}
         </div>
       </div>
